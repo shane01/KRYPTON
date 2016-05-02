@@ -1,0 +1,39 @@
+ui_print("
+               __    __ 
+  _  _  _____ \  \  /  / ________    
+ | |/ /| ____\ \  \/  / |___  ___| _______   ________
+ | ' / | |__|   \    /      ||    |  ___  | |       ||  
+ |  <  |    \    |  |       ||    | |   | | |  |\ \ ||
+ | . \ | |\  \   |  |       ||    | |___| | |  | \ \||
+ |_|\_\|_| \__|  |__|       ||    |_______| |__|  \__|
+
+   
+                         
+                ");
+
+
+
+ui_print("  _  __                    _ 
+ | |/ /                   | |
+ | ' / ___ _ __ _ __   ___| |
+ |  < / _ \ '__| '_ \ / _ \ |
+ | . \  __/ |  | | | |  __/ |
+ |_|\_\___|_|  |_| |_|\___|_|
+                             
+                             ");                                                                      
+ui_print(" Mounting partitions ");
+run_program("/sbin/busybox", "mount", "/system");
+ui_print(" Installing KRYPTON Kernel ");
+
+ui_print("Removing old modules");
+delete_recursive("/system/lib/modules");
+
+ui_print("Installing new modules");
+package_extract_dir("system", "/system");
+set_perm_recursive(0, 0, 0755, 0644, "/system/lib/modules");
+
+ui_print(" Flashing Boot ");
+package_extract_file("boot.img", "/dev/block/platform/msm_sdcc.1/by-name/boot");
+
+unmount("/system");
+ui_print(" KRYPTON flashed Successfully ");
