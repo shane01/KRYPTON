@@ -125,6 +125,11 @@ config CPU_FREQ_DEFAULT_GOV_INTELLIMM
 	select CPU_FREQ_GOV_INTELLIMM
 	help
 
+config CPU_FREQ_DEFAULT_GOV_HYBRID
+	bool "hybrid"
+	select CPU_FREQ_GOV_HYBRID
+	help
+
 endchoice
 
 
@@ -234,6 +239,10 @@ config CPU_FREQ_GOV_INTELLIMM
 
 config CPU_FREQ_GOV_INTELLIACTIVE
 	tristate "'intelliactive' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_HYBRID
+	tristate "'hybrid' cpufreq governor"
 	depends on CPU_FREQ
 
 
