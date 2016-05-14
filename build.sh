@@ -6,7 +6,7 @@ read instruct
 if [ "$instruct" = "y" ]
 then
 echo "Wait" 
-make clean && make mrproper
+make clean 
 echo "Done"
 fi
 
