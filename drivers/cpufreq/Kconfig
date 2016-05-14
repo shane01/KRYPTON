@@ -115,6 +115,16 @@ config CPU_FREQ_DEFAULT_GOV_ALUCARD
 	select CPU_FREQ_GOV_ALUCARD
 	help
 
+config CPU_FREQ_DEFAULT_GOV_INTELLIACTIVE
+	bool "intelliactive"
+	select CPU_FREQ_GOV_INTELLIACTIVE
+	help
+
+config CPU_FREQ_DEFAULT_GOV_INTELLIMM
+	bool "intellimm"
+	select CPU_FREQ_GOV_INTELLIMM
+	help
+
 endchoice
 
 
@@ -216,6 +226,14 @@ config CPU_FREQ_GOV_CONSERVATIVE
 
 config CPU_FREQ_GOV_ALUCARD
 	tristate "'alucard' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_INTELLIMM
+	tristate "'intellimm' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_INTELLIACTIVE
+	tristate "'intelliactive' cpufreq governor"
 	depends on CPU_FREQ
 
 
