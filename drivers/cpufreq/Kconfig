@@ -130,6 +130,11 @@ config CPU_FREQ_DEFAULT_GOV_HYBRID
 	select CPU_FREQ_GOV_HYBRID
 	help
 
+config CPU_FREQ_DEFAULT_GOV_SAKURACTIVE
+	bool "sakuractive"
+	select CPU_FREQ_GOV_SAKURACTIVE
+	help
+
 endchoice
 
 
@@ -243,6 +248,10 @@ config CPU_FREQ_GOV_INTELLIACTIVE
 
 config CPU_FREQ_GOV_HYBRID
 	tristate "'hybrid' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_SAKURACTIVE
+	tristate "'sakuractive' cpufreq governor"
 	depends on CPU_FREQ
 
 

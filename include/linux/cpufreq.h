@@ -389,6 +389,9 @@ extern struct cpufreq_governor cpufreq_gov_intellimm;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_HYBRID)
 extern struct cpufreq_governor cpufreq_gov_hybrid;
 #define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_hybrid)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_SAKURACTIVE)
+extern struct cpufreq_governor cpufreq_gov_sakuractive;
+#define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_sakuractive)
 #endif
 
 
