@@ -101,6 +101,18 @@ config IOSCHED_ZEN
         ---help---
           The zen I/O scheduler
 
+config IOSCHED_SIO
+        tristate "sio"
+        default n
+        ---help---
+          The zen I/O scheduler
+
+config IOSCHED_SIOPLUS
+        tristate "sioplus"
+        default n
+        ---help---
+          The zen I/O scheduler
+
 choice
 	prompt "Default I/O scheduler"
 	default DEFAULT_CFQ
@@ -140,6 +152,12 @@ choice
         config DEFAULT_ZEN
         bool "ZEN" if IOSCHED_ZEN=y
 
+        config DEFAULT_SIO
+        bool "SIO" if IOSCHED_SIO=y
+
+        config DEFAULT_SIOPLUS
+        bool "SIOPLUS" if IOSCHED_SIOPLUS=y
+
 
 	config DEFAULT_NOOP
 		bool "No-op"
@@ -155,6 +173,10 @@ config DEFAULT_IOSCHED
 	default "bfq" if DEFAULT_BFQ
 	default "noop" if DEFAULT_NOOP
         default "zen" if DEFAULT_ZEN
+        default "sio" if DEFAULT_SIO
+        default "sioplus" if DEFAULT_SIOPLUS
+
+
 
 endmenu
 
